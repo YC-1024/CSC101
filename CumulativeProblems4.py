@@ -10,6 +10,7 @@
 # there will be no '<' without a following '>'.
 
 def remove_tags(words):
+    #way 1
     start = -1
     end = -1
     for c in words:
@@ -22,6 +23,14 @@ def remove_tags(words):
             start = -1
             end = -1
     return words.split()
+    
+    #way 2
+    start = words.find('<')
+    while start != -1:
+        words = words[:start] + ' ' + words[words.find('>',start)+1:]
+        start = words.find('<')
+    return words.split()
+
 
 
 print remove_tags('''<h1>Title</h1><p>This is a
